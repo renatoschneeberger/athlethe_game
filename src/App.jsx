@@ -13,9 +13,13 @@ import History from './pages/History';
 import WhatsAppMock from './pages/WhatsAppMock';
 import HostDemo from './pages/HostDemo';
 
+// Base path für GitHub Pages
+// Importiert den base path aus vite.config.js (wird zur Build-Zeit ersetzt)
+const basePath = import.meta.env.BASE_URL || '/';
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basePath}>
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <Toast />
