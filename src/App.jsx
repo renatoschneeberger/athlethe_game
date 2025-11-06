@@ -14,8 +14,33 @@ import WhatsAppMock from './pages/WhatsAppMock';
 import HostDemo from './pages/HostDemo';
 
 // Base path für GitHub Pages
-// Importiert den base path aus vite.config.js (wird zur Build-Zeit ersetzt)
-const basePath = import.meta.env.BASE_URL || '/';
+// Vite setzt BASE_URL automatisch basierend auf vite.config.js base
+let basePath = import.meta.env.BASE_URL;
+
+// Fallback: Erkenne Base Path aus window.location
+if (!basePath || basePath === '/') {
+  const path = window.location.pathname;
+  // Wenn wir auf GitHub Pages sind, sollte der Pfad mit /athlethe_game/ beginnen
+  if (path.startsWith('/athlethe_game/')) {
+    basePath = '/athlethe_game';
+  } else {
+    basePath = '';
+  }
+}
+
+// Normalisiere: Entferne trailing slash, füge leading slash hinzu
+basePath = basePath.replace(/\/$/, ''); // Entferne trailing slash
+if (basePath && !basePath.startsWith('/')) {
+  basePath = '/' + basePath;
+}
+
+// Debug-Log (immer sichtbar für Troubleshooting)
+console.log('🔍 Router Debug Info:');
+console.log('  BASE_URL:', import.meta.env.BASE_URL);
+console.log('  window.location.pathname:', window.location.pathname);
+console.log('  window.location.href:', window.location.href);
+console.log('  Calculated basePath:', basePath);
+console.log('  Environment:', import.meta.env.MODE);
 
 function App() {
   return (
