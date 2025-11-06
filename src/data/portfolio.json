@@ -1,0 +1,46 @@
+{
+  "cash": 1000000,
+  "holdings": [
+    {"symbol": "BTC", "qty": 2.0, "avgPrice": 65000, "marketPrice": 68000},
+    {"symbol": "ETH", "qty": 50.0, "avgPrice": 3200, "marketPrice": 3500}
+  ],
+  "history": [
+    {
+      "id": "t1",
+      "ts": "2025-10-10T10:15:00Z",
+      "type": "BUY",
+      "symbol": "BTC",
+      "qty": 1.0,
+      "price": 64000,
+      "rationale": "CPI tiefer als erwartet → Momentum"
+    },
+    {
+      "id": "t2",
+      "ts": "2025-10-12T14:30:00Z",
+      "type": "BUY",
+      "symbol": "ETH",
+      "qty": 30.0,
+      "price": 3200,
+      "rationale": "Merge erfolgreich – langfristig bullish"
+    },
+    {
+      "id": "t3",
+      "ts": "2025-10-15T09:20:00Z",
+      "type": "BUY",
+      "symbol": "BTC",
+      "qty": 1.0,
+      "price": 66000,
+      "rationale": "Nachkauf nach Korrektur"
+    },
+    {
+      "id": "t4",
+      "ts": "2025-10-18T16:45:00Z",
+      "type": "BUY",
+      "symbol": "ETH",
+      "qty": 20.0,
+      "price": 3300,
+      "rationale": "Diversifikation Portfolio"
+    }
+  ]
+}
+

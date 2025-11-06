@@ -1,0 +1,37 @@
+{
+  "messages": [
+    {
+      "id": "m1",
+      "type": "reminder",
+      "title": "Challenge-Erinnerung",
+      "scheduled": "2025-10-26T08:00:00Z",
+      "status": "sent",
+      "preview": "Hallo! Deine Wochen-Challenge läuft noch bis Montag 08:00. Jetzt teilnehmen: https://athlete.game/app/challenge"
+    },
+    {
+      "id": "m2",
+      "type": "leaderboard",
+      "title": "Leaderboard-Update",
+      "scheduled": "2025-10-26T18:00:00Z",
+      "status": "sent",
+      "preview": "Du bist auf Platz 4 diese Woche! 🎯 Schau dir das Leaderboard an: https://athlete.game/app/leaderboards"
+    },
+    {
+      "id": "m3",
+      "type": "reminder",
+      "title": "Check-in Erinnerung",
+      "scheduled": "2025-10-27T09:00:00Z",
+      "status": "planned",
+      "preview": "Zeit für deinen wöchentlichen Check-in! Wie läuft deine Strategie? https://athlete.game/app"
+    },
+    {
+      "id": "m4",
+      "type": "challenge",
+      "title": "Neue Challenge verfügbar",
+      "scheduled": "2025-10-28T08:00:00Z",
+      "status": "planned",
+      "preview": "Neue Wochen-Challenge ist da! 🚀 Real-Case: FED-Zinsentscheidung. Jetzt mitmachen: https://athlete.game/app/challenge"
+    }
+  ]
+}
+

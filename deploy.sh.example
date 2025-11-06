@@ -1,0 +1,31 @@
+#!/bin/bash
+# Deployment-Script für eigenen Server
+# Anpassen: USER, SERVER, REMOTE_PATH
+# Ausführbar machen: chmod +x deploy.sh
+
+USER="dein-user"
+SERVER="dein-server.com"
+REMOTE_PATH="/var/www/athlethe_game"
+
+echo "🔨 Building..."
+npm run build
+
+if [ $? -ne 0 ]; then
+    echo "❌ Build fehlgeschlagen!"
+    exit 1
+fi
+
+echo "📤 Uploading to $SERVER..."
+rsync -avz --delete dist/ $USER@$SERVER:$REMOTE_PATH/
+
+if [ $? -ne 0 ]; then
+    echo "❌ Upload fehlgeschlagen!"
+    exit 1
+fi
+
+echo "🔄 Reloading Nginx..."
+ssh $USER@$SERVER "sudo systemctl reload nginx"
+
+echo "✅ Deployment abgeschlossen!"
+echo "🌐 App verfügbar unter: http://$SERVER"
+

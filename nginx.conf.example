@@ -1,0 +1,35 @@
+# Nginx Konfiguration für Athlete Game
+# Kopiere diese Datei nach: /etc/nginx/sites-available/athlethe_game
+# Dann: sudo ln -s /etc/nginx/sites-available/athlethe_game /etc/nginx/sites-enabled/
+# Dann: sudo nginx -t && sudo systemctl reload nginx
+
+server {
+    listen 80;
+    server_name deine-domain.com www.deine-domain.com;
+    root /var/www/athlethe_game;
+    index index.html;
+
+    # Gzip Kompression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml+rss application/json;
+
+    # React Router - Alle Routen auf index.html umleiten
+    # WICHTIG: Ohne diese Regel funktionieren direkte URLs nicht!
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache für statische Assets (1 Jahr)
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Security Headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+}
+

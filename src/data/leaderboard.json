@@ -1,0 +1,27 @@
+{
+  "week": [
+    {"rank": 1, "name": "A. Meyer", "score": 87, "delta": 3, "email": "a.meyer@example.com"},
+    {"rank": 2, "name": "C. Rossi", "score": 83, "delta": -1, "email": "c.rossi@example.com"},
+    {"rank": 3, "name": "J. Novak", "score": 80, "delta": 0, "email": "j.novak@example.com"},
+    {"rank": 4, "name": "L. Kim", "score": 78, "delta": 2, "email": "l.kim@example.com"},
+    {"rank": 5, "name": "M. Schmidt", "score": 75, "delta": -2, "email": "m.schmidt@example.com"},
+    {"rank": 6, "name": "P. Chen", "score": 72, "delta": 1, "email": "p.chen@example.com"},
+    {"rank": 7, "name": "R. Silva", "score": 70, "delta": 0, "email": "r.silva@example.com"},
+    {"rank": 8, "name": "T. Johnson", "score": 68, "delta": -1, "email": "t.johnson@example.com"},
+    {"rank": 9, "name": "S. Patel", "score": 65, "delta": 3, "email": "s.patel@example.com"},
+    {"rank": 10, "name": "K. Wong", "score": 63, "delta": 0, "email": "k.wong@example.com"}
+  ],
+  "overall": [
+    {"rank": 1, "name": "C. Rossi", "score": 420, "email": "c.rossi@example.com"},
+    {"rank": 2, "name": "A. Meyer", "score": 415, "email": "a.meyer@example.com"},
+    {"rank": 3, "name": "L. Kim", "score": 409, "email": "l.kim@example.com"},
+    {"rank": 4, "name": "J. Novak", "score": 405, "email": "j.novak@example.com"},
+    {"rank": 5, "name": "M. Schmidt", "score": 398, "email": "m.schmidt@example.com"},
+    {"rank": 6, "name": "P. Chen", "score": 392, "email": "p.chen@example.com"},
+    {"rank": 7, "name": "R. Silva", "score": 385, "email": "r.silva@example.com"},
+    {"rank": 8, "name": "T. Johnson", "score": 380, "email": "t.johnson@example.com"},
+    {"rank": 9, "name": "S. Patel", "score": 375, "email": "s.patel@example.com"},
+    {"rank": 10, "name": "K. Wong", "score": 370, "email": "k.wong@example.com"}
+  ]
+}
+
