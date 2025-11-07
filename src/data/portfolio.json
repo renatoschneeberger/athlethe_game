@@ -12,7 +12,7 @@
       "symbol": "BTC",
       "qty": 1.0,
       "price": 64000,
-      "rationale": "CPI tiefer als erwartet → Momentum"
+      "rationale": "CPI lower than expected → Momentum"
     },
     {
       "id": "t2",
@@ -21,7 +21,7 @@
       "symbol": "ETH",
       "qty": 30.0,
       "price": 3200,
-      "rationale": "Merge erfolgreich – langfristig bullish"
+      "rationale": "Merge successful – long-term bullish"
     },
     {
       "id": "t3",
@@ -30,7 +30,7 @@
       "symbol": "BTC",
       "qty": 1.0,
       "price": 66000,
-      "rationale": "Nachkauf nach Korrektur"
+      "rationale": "Buy after correction"
     },
     {
       "id": "t4",
@@ -39,7 +39,7 @@
       "symbol": "ETH",
       "qty": 20.0,
       "price": 3300,
-      "rationale": "Diversifikation Portfolio"
+      "rationale": "Portfolio diversification"
     }
   ]
 }

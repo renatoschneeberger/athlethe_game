@@ -6,27 +6,27 @@
   "questions": [
     {
       "id": "q1",
-      "title": "FED senkt Leitzins um 25 bp – was tust du?",
-      "context": "Die US-Notenbank hat den Leitzins um 25 Basispunkte gesenkt. Der Markt reagiert positiv auf die lockere Geldpolitik.",
-      "options": ["Kaufen", "Halten", "Verkaufen"],
-      "correct": "Kaufen",
-      "explanation": "Lockerere Geldpolitik stützt Risikoassets – kurzfristig positiv."
+      "title": "FED cuts interest rate by 25 bp – what do you do?",
+      "context": "The US Federal Reserve has cut the interest rate by 25 basis points. The market reacts positively to the loose monetary policy.",
+      "options": ["Buy", "Hold", "Sell"],
+      "correct": "Buy",
+      "explanation": "Loose monetary policy supports risk assets – positive in the short term."
     },
     {
       "id": "q2",
-      "title": "BTC +5% in 24h, CPI morgen – dein Zug?",
-      "context": "Bitcoin steigt stark, aber wichtige Inflationsdaten werden morgen veröffentlicht.",
-      "options": ["Teilgewinn", "Halten", "Aufstocken"],
-      "correct": "Teilgewinn",
-      "explanation": "Volatilität vor Daten – Risiko reduzieren."
+      "title": "BTC +5% in 24h, CPI tomorrow – your move?",
+      "context": "Bitcoin is rising strongly, but important inflation data will be published tomorrow.",
+      "options": ["Take partial profit", "Hold", "Add more"],
+      "correct": "Take partial profit",
+      "explanation": "Volatility before data – reduce risk."
     },
     {
       "id": "q3",
-      "title": "ETH Merge erfolgreich – langfristige Strategie?",
-      "context": "Ethereum hat erfolgreich auf Proof-of-Stake umgestellt. Energieverbrauch sinkt um 99%.",
-      "options": ["All-in ETH", "Diversifizieren", "Abwarten"],
-      "correct": "Diversifizieren",
-      "explanation": "Fundamentale Verbesserung, aber Diversifikation bleibt wichtig."
+      "title": "ETH Merge successful – long-term strategy?",
+      "context": "Ethereum has successfully switched to Proof-of-Stake. Energy consumption drops by 99%.",
+      "options": ["All-in ETH", "Diversify", "Wait"],
+      "correct": "Diversify",
+      "explanation": "Fundamental improvement, but diversification remains important."
     }
   ]
 }

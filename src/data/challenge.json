@@ -1,9 +1,9 @@
 {
   "id": "w7",
-  "title": "US-CPI unter Erwartung",
-  "brief": "Die US-Inflationsdaten liegen deutlich unter dem Konsens. Der Markt preist Zinssenkungen früher ein. Risikoassets reagieren positiv.",
+  "title": "US-CPI Below Expectations",
+  "brief": "US inflation data is significantly below consensus. The market prices in rate cuts earlier. Risk assets react positively.",
   "deadline": "2025-10-27T08:00:00Z",
   "status": "active",
-  "actions": ["Kaufen", "Halten", "Verkaufen"]
+  "actions": ["Buy", "Hold", "Sell"]
 }
 
