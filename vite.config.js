@@ -11,13 +11,14 @@ export default defineConfig({
   // Für GitHub Pages: base: '/REPOSITORY-NAME/'
   base: process.env.VITE_BASE || '/',
   build: {
-    // CSP-konform: Verwende esbuild (Standard), der keine eval() verwendet
+    // CSP-konform: Alles in einem Bundle, keine dynamischen Imports
     target: 'es2015',
-    minify: 'esbuild', // esbuild ist CSP-konform
+    minify: 'esbuild',
     rollupOptions: {
       output: {
-        // Vermeide dynamische Imports die eval() verwenden könnten
         format: 'es',
+        // Alles in einem Bundle - vermeidet eval() durch dynamische Imports
+        inlineDynamicImports: true,
       },
     },
   },

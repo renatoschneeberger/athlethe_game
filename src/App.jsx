@@ -35,24 +35,24 @@ function App() {
   try {
     return (
       <BrowserRouter basename={normalizedBasePath}>
-      <div className="min-h-screen bg-gray-50">
-        <Navbar />
-        <Toast />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/session/:code" element={<SessionJoin />} />
-          <Route path="/session/:code/minigame" element={<MiniGame />} />
-          <Route path="/session/:code/leaderboard" element={<SessionLeaderboard />} />
-          <Route path="/app" element={<Dashboard />} />
-          <Route path="/app/challenge" element={<Challenge />} />
-          <Route path="/app/portfolio" element={<Portfolio />} />
-          <Route path="/app/leaderboards" element={<Leaderboards />} />
-          <Route path="/app/history" element={<History />} />
-          <Route path="/mock/whatsapp" element={<WhatsAppMock />} />
-          <Route path="/host" element={<HostDemo />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <Toast />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/session/:code" element={<SessionJoin />} />
+            <Route path="/session/:code/minigame" element={<MiniGame />} />
+            <Route path="/session/:code/leaderboard" element={<SessionLeaderboard />} />
+            <Route path="/app" element={<Dashboard />} />
+            <Route path="/app/challenge" element={<Challenge />} />
+            <Route path="/app/portfolio" element={<Portfolio />} />
+            <Route path="/app/leaderboards" element={<Leaderboards />} />
+            <Route path="/app/history" element={<History />} />
+            <Route path="/mock/whatsapp" element={<WhatsAppMock />} />
+            <Route path="/host" element={<HostDemo />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     );
   } catch (error) {
     console.error('❌ App Error:', error);
