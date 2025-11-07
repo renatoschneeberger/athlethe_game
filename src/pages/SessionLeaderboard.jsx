@@ -57,12 +57,12 @@ export default function SessionLeaderboard() {
 
   const handleEmailSubmit = async () => {
     if (!email.trim()) {
-      setEmailError('Bitte E-Mail angeben');
+      setEmailError('Please enter your email');
       return;
     }
 
     if (!validateEmail(email)) {
-      setEmailError('Bitte gültige E-Mail-Adresse eingeben');
+      setEmailError('Please enter a valid email address');
       return;
     }
 
@@ -71,7 +71,7 @@ export default function SessionLeaderboard() {
       await mockApi.submitEmail(email);
       setLeaderboardEmailSubmitted(true);
       setShowEmailModal(false);
-      setToast({ type: 'success', message: 'E-Mail gespeichert!' });
+      setToast({ type: 'success', message: 'Email saved!' });
       await loadLeaderboard();
     } catch (err) {
       setToast({ type: 'error', message: err.message });
@@ -85,29 +85,29 @@ export default function SessionLeaderboard() {
       <Modal
         isOpen={showEmailModal}
         onClose={() => navigate('/')}
-        title="Leaderboard anzeigen"
+        title="View Leaderboard"
       >
         <p className="mb-4 text-gray-600">
-          Bitte gib deine E-Mail-Adresse ein, um das Leaderboard zu sehen.
+          Please enter your email address to view the leaderboard.
         </p>
         <Input
-          label="E-Mail"
+          label="Email"
           type="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
             setEmailError('');
           }}
-          placeholder="deine@email.com"
+          placeholder="your@email.com"
           required
           error={emailError}
         />
         <div className="flex gap-3 mt-6">
           <Button onClick={handleEmailSubmit} loading={loading} className="flex-1">
-            Anzeigen
+            View
           </Button>
           <Button variant="secondary" onClick={() => navigate('/')}>
-            Abbrechen
+            Cancel
           </Button>
         </div>
       </Modal>
@@ -140,7 +140,7 @@ export default function SessionLeaderboard() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Woche
+              Week
             </button>
             <button
               onClick={() => setActiveTab('overall')}
@@ -150,7 +150,7 @@ export default function SessionLeaderboard() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Gesamt
+              Overall
             </button>
           </div>
 
@@ -159,7 +159,7 @@ export default function SessionLeaderboard() {
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left py-3 px-4">Rang</th>
+                  <th className="text-left py-3 px-4">Rank</th>
                   <th className="text-left py-3 px-4">Name</th>
                   <th className="text-right py-3 px-4">Score</th>
                   <th className="text-right py-3 px-4">Δ</th>
@@ -189,7 +189,7 @@ export default function SessionLeaderboard() {
 
           <div className="mt-6">
             <Button onClick={() => navigate('/app')} className="w-full">
-              Weiter zum Season Dashboard
+              Continue to Season Dashboard
             </Button>
           </div>
         </Card>

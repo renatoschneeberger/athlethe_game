@@ -36,7 +36,7 @@ export default function MiniGame() {
       await mockApi.submitAnswer(code, currentQuestion.id, selectedAnswer);
       addAnswer({ questionId: currentQuestion.id, answer: selectedAnswer });
       setSubmitted(true);
-      setToast({ type: 'success', message: 'Antwort gespeichert!' });
+      setToast({ type: 'success', message: 'Answer saved!' });
     } catch (err) {
       setToast({ type: 'error', message: err.message });
     } finally {
@@ -70,7 +70,7 @@ export default function MiniGame() {
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Frage {currentQuestionIndex + 1} von {questions.length}</span>
+            <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
@@ -116,7 +116,7 @@ export default function MiniGame() {
 
           {submitted && currentQuestion.explanation && (
             <div className="mb-6 p-4 bg-green-50 rounded-lg border border-green-200">
-              <p className="text-sm font-medium text-green-800 mb-1">Erklärung:</p>
+              <p className="text-sm font-medium text-green-800 mb-1">Explanation:</p>
               <p className="text-sm text-green-700">{currentQuestion.explanation}</p>
             </div>
           )}
@@ -129,11 +129,11 @@ export default function MiniGame() {
                 loading={loading}
                 className="flex-1"
               >
-                Abschicken
+                Submit
               </Button>
             ) : (
               <Button onClick={handleNext} className="flex-1">
-                {isLastQuestion ? 'Zum Leaderboard' : 'Nächste Frage'}
+                {isLastQuestion ? 'View Leaderboard' : 'Next Question'}
               </Button>
             )}
           </div>

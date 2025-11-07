@@ -44,7 +44,7 @@ export default function SessionJoin() {
 
   const handleJoin = () => {
     if (!nickname.trim()) {
-      setLocalError('Bitte Nickname angeben');
+      setLocalError('Please enter a nickname');
       return;
     }
 
@@ -67,8 +67,8 @@ export default function SessionJoin() {
       <div className="min-h-screen bg-gray-50 p-4">
         <div className="max-w-2xl mx-auto">
           <Card>
-            <p className="text-red-600">Session nicht gefunden</p>
-            <Button onClick={() => navigate('/')} className="mt-4">Zurück</Button>
+            <p className="text-red-600">Session not found</p>
+            <Button onClick={() => navigate('/')} className="mt-4">Back</Button>
           </Card>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function SessionJoin() {
         <div className="mb-4">
           <h1 className="text-2xl font-bold mb-2">{session.title}</h1>
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span>Start in</span>
+            <span>Starts in</span>
             <span className="font-mono font-semibold text-blue-600">
               {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </span>
@@ -92,7 +92,7 @@ export default function SessionJoin() {
         </div>
 
         <Card>
-          <h2 className="text-xl font-semibold mb-4">Session beitreten</h2>
+          <h2 className="text-xl font-semibold mb-4">Join Session</h2>
           
           <Input
             label="Nickname"
@@ -101,25 +101,25 @@ export default function SessionJoin() {
               setNickname(e.target.value);
               setLocalError('');
             }}
-            placeholder="Dein Nickname"
+            placeholder="Your nickname"
             required
             error={error}
           />
 
           <Input
-            label="E-Mail (optional)"
+            label="Email (optional)"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="deine@email.com"
+            placeholder="your@email.com"
           />
 
           <div className="flex gap-3 mt-6">
             <Button onClick={handleJoin} className="flex-1">
-              Beitreten
+              Join
             </Button>
             <Button variant="secondary" onClick={() => navigate('/')}>
-              Zurück
+              Back
             </Button>
           </div>
         </Card>

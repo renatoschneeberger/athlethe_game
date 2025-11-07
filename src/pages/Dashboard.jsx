@@ -67,27 +67,27 @@ export default function Dashboard() {
         <div className="mb-6">
           <h1 className="text-3xl font-bold mb-2">Season Dashboard</h1>
           <div className="flex items-center gap-4 text-sm text-gray-600">
-            <span>Woche {weekNumber} von {totalWeeks}</span>
-            <Badge variant="info">Aktive Season</Badge>
+            <span>Week {weekNumber} of {totalWeeks}</span>
+            <Badge variant="info">Active Season</Badge>
           </div>
-          <p className="text-sm text-gray-500 mt-1">Nächster Check-in: Montag, 08:00 Uhr</p>
+          <p className="text-sm text-gray-500 mt-1">Next check-in: Monday, 08:00</p>
         </div>
 
         {/* Challenge Card */}
         <Card highlight className="mb-6">
           <div className="flex justify-between items-start">
             <div className="flex-1">
-              <h2 className="text-xl font-semibold mb-2">Aktuelle Challenge</h2>
-              <p className="text-gray-600 mb-4">{challenge?.title || 'Keine aktive Challenge'}</p>
+              <h2 className="text-xl font-semibold mb-2">Current Challenge</h2>
+              <p className="text-gray-600 mb-4">{challenge?.title || 'No active challenge'}</p>
               <div className="flex items-center gap-2 text-sm text-gray-500">
-                <span>Fällig: {challenge?.deadline ? new Date(challenge.deadline).toLocaleDateString('de-DE') : 'N/A'}</span>
+                <span>Due: {challenge?.deadline ? new Date(challenge.deadline).toLocaleDateString('en-US') : 'N/A'}</span>
                 <Badge variant={challenge?.status === 'active' ? 'success' : 'default'}>
-                  {challenge?.status || 'Inaktiv'}
+                  {challenge?.status || 'Inactive'}
                 </Badge>
               </div>
             </div>
             <Link to="/app/challenge">
-              <Button>Los geht's</Button>
+              <Button>Let's Go</Button>
             </Link>
           </div>
         </Card>
@@ -96,7 +96,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {/* Performance Card */}
           <Card>
-            <h3 className="font-semibold mb-2">Meine Performance</h3>
+            <h3 className="font-semibold mb-2">My Performance</h3>
             <div className="mb-4">
               <div className="text-2xl font-bold text-blue-600">{pnlPercent}%</div>
               <div className="text-sm text-gray-600">
@@ -110,22 +110,22 @@ export default function Dashboard() {
 
           {/* Portfolio Value */}
           <Card>
-            <h3 className="font-semibold mb-2">Portfolio-Wert</h3>
+            <h3 className="font-semibold mb-2">Portfolio Value</h3>
             <div className="text-2xl font-bold text-gray-900 mb-2">
-              {(totalValue + (portfolio?.cash || 0)).toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+              {(totalValue + (portfolio?.cash || 0)).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
             </div>
             <div className="text-sm text-gray-600">
-              Cash: {portfolio?.cash.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) || 0}
+              Cash: {portfolio?.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) || 0}
             </div>
           </Card>
 
           {/* Next Check-in */}
           <Card>
-            <h3 className="font-semibold mb-2">Nächster Check-in</h3>
-            <div className="text-2xl font-bold text-gray-900 mb-2">Montag</div>
-            <div className="text-sm text-gray-600">08:00 Uhr</div>
+            <h3 className="font-semibold mb-2">Next Check-in</h3>
+            <div className="text-2xl font-bold text-gray-900 mb-2">Monday</div>
+            <div className="text-sm text-gray-600">08:00</div>
             <div className="mt-4">
-              <Badge variant="info">Geplant</Badge>
+              <Badge variant="info">Scheduled</Badge>
             </div>
           </Card>
         </div>
