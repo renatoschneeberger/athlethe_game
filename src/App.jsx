@@ -15,36 +15,28 @@ import HostDemo from './pages/HostDemo';
 
 // Base path für GitHub Pages
 // Vite setzt BASE_URL automatisch basierend auf vite.config.js base
+// BASE_URL wird zur Build-Zeit durch Vite gesetzt
 let basePath = import.meta.env.BASE_URL;
 
-// Fallback: Erkenne Base Path aus window.location
+// Normalisiere basePath
 if (!basePath || basePath === '/') {
-  const path = window.location.pathname;
-  // Wenn wir auf GitHub Pages sind, sollte der Pfad mit /athlethe_game/ beginnen
-  if (path.startsWith('/athlethe_game/')) {
-    basePath = '/athlethe_game';
-  } else {
-    basePath = '';
-  }
-}
-
-// Normalisiere: Entferne trailing slash, füge leading slash hinzu
-basePath = basePath.replace(/\/$/, ''); // Entferne trailing slash
-if (basePath && !basePath.startsWith('/')) {
-  basePath = '/' + basePath;
+  basePath = '';
+} else {
+  // Entferne trailing slash
+  basePath = basePath.replace(/\/$/, '');
 }
 
 // Debug-Log (immer sichtbar für Troubleshooting)
 console.log('🔍 Router Debug Info:');
 console.log('  BASE_URL:', import.meta.env.BASE_URL);
-console.log('  window.location.pathname:', window.location.pathname);
-console.log('  window.location.href:', window.location.href);
-console.log('  Calculated basePath:', basePath);
+console.log('  window.location.pathname:', typeof window !== 'undefined' ? window.location.pathname : 'N/A');
+console.log('  window.location.href:', typeof window !== 'undefined' ? window.location.href : 'N/A');
+console.log('  Using basePath:', basePath || '(empty - root)');
 console.log('  Environment:', import.meta.env.MODE);
 
 function App() {
   return (
-    <BrowserRouter basename={basePath}>
+    <BrowserRouter basename={basePath || undefined}>
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <Toast />
