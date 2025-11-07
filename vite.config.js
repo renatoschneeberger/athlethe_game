@@ -10,4 +10,15 @@ export default defineConfig({
   // Für lokale Entwicklung: base: '/'
   // Für GitHub Pages: base: '/REPOSITORY-NAME/'
   base: process.env.VITE_BASE || '/',
+  build: {
+    // CSP-konform: Verwende esbuild (Standard), der keine eval() verwendet
+    target: 'es2015',
+    minify: 'esbuild', // esbuild ist CSP-konform
+    rollupOptions: {
+      output: {
+        // Vermeide dynamische Imports die eval() verwenden könnten
+        format: 'es',
+      },
+    },
+  },
 })
