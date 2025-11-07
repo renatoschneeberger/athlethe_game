@@ -16,27 +16,25 @@ import HostDemo from './pages/HostDemo';
 // Base path für GitHub Pages
 // Vite setzt BASE_URL automatisch basierend auf vite.config.js base
 // BASE_URL wird zur Build-Zeit durch Vite gesetzt
-let basePath = import.meta.env.BASE_URL;
+const basePath = import.meta.env.BASE_URL;
 
-// Normalisiere basePath
-if (!basePath || basePath === '/') {
-  basePath = '';
-} else {
-  // Entferne trailing slash
-  basePath = basePath.replace(/\/$/, '');
-}
+// Normalisiere: Entferne trailing slash, leere Strings werden zu undefined
+const normalizedBasePath = basePath && basePath !== '/' 
+  ? basePath.replace(/\/$/, '') 
+  : undefined;
 
 // Debug-Log (immer sichtbar für Troubleshooting)
 console.log('🔍 Router Debug Info:');
 console.log('  BASE_URL:', import.meta.env.BASE_URL);
 console.log('  window.location.pathname:', typeof window !== 'undefined' ? window.location.pathname : 'N/A');
 console.log('  window.location.href:', typeof window !== 'undefined' ? window.location.href : 'N/A');
-console.log('  Using basePath:', basePath || '(empty - root)');
+console.log('  Using basePath:', normalizedBasePath || '(undefined - root)');
 console.log('  Environment:', import.meta.env.MODE);
 
 function App() {
-  return (
-    <BrowserRouter basename={basePath || undefined}>
+  try {
+    return (
+      <BrowserRouter basename={normalizedBasePath}>
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <Toast />
@@ -55,7 +53,19 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
-  );
+    );
+  } catch (error) {
+    console.error('❌ App Error:', error);
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Error Loading App</h1>
+          <p className="text-gray-600">{error.message}</p>
+          <p className="text-sm text-gray-500 mt-2">Check console for details</p>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
