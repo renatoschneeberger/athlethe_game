@@ -58,7 +58,7 @@ export default function Portfolio() {
   const handleTradeSubmit = async () => {
     const qty = parseFloat(tradeQty);
     if (!qty || qty <= 0) {
-      setToast({ type: 'error', message: 'Bitte gültige Menge eingeben' });
+      setToast({ type: 'error', message: 'Please enter a valid quantity' });
       return;
     }
 
@@ -69,13 +69,13 @@ export default function Portfolio() {
     const totalCost = qty * price;
 
     if (tradeType === 'BUY' && totalCost > portfolio.cash) {
-      setToast({ type: 'error', message: 'Nicht genügend Cash' });
+      setToast({ type: 'error', message: 'Insufficient cash' });
       return;
     }
 
     const holding = portfolio.holdings.find(h => h.symbol === tradeSymbol);
     if (tradeType === 'SELL' && (!holding || holding.qty < qty)) {
-      setToast({ type: 'error', message: 'Nicht genügend Bestand' });
+      setToast({ type: 'error', message: 'Insufficient holdings' });
       return;
     }
 
@@ -84,7 +84,7 @@ export default function Portfolio() {
       await mockApi.executeTrade(tradeSymbol, qty, tradeType);
       updatePortfolioAfterTrade(tradeSymbol, qty, price, tradeType);
       setShowTradeModal(false);
-      setToast({ type: 'success', message: `${tradeType === 'BUY' ? 'Kauf' : 'Verkauf'} erfolgreich!` });
+      setToast({ type: 'success', message: `${tradeType === 'BUY' ? 'Buy' : 'Sell'} successful!` });
     } catch (err) {
       setToast({ type: 'error', message: err.message });
     } finally {
@@ -115,28 +115,28 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-4">
           <Link to="/app" className="text-blue-600 hover:text-blue-800 text-sm">
-            ← Zurück zum Dashboard
+            ← Back to Dashboard
           </Link>
         </div>
 
         {/* Header Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <Card>
-            <div className="text-sm text-gray-600 mb-1">Spielgeld-Kontostand</div>
+            <div className="text-sm text-gray-600 mb-1">Paper Money Balance</div>
             <div className="text-2xl font-bold">
-              {portfolio?.cash.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+              {portfolio?.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
             </div>
           </Card>
           <Card>
-            <div className="text-sm text-gray-600 mb-1">Tages-P&L</div>
+            <div className="text-sm text-gray-600 mb-1">Daily P&L</div>
             <div className={`text-2xl font-bold ${pnl >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-              {pnl >= 0 ? '+' : ''}{pnl.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })} ({pnlPercent}%)
+              {pnl >= 0 ? '+' : ''}{pnl.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} ({pnlPercent}%)
             </div>
           </Card>
           <Card>
-            <div className="text-sm text-gray-600 mb-1">Portfolio-Wert</div>
+            <div className="text-sm text-gray-600 mb-1">Portfolio Value</div>
             <div className="text-2xl font-bold">
-              {(totalValue + (portfolio?.cash || 0)).toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+              {(totalValue + (portfolio?.cash || 0)).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
             </div>
           </Card>
         </div>
@@ -144,7 +144,7 @@ export default function Portfolio() {
         {/* Info Banner */}
         <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
           <p className="text-sm text-yellow-800">
-            ⚠️ Simulation – kein echtes Geld
+            ⚠️ Simulation – no real money
           </p>
         </div>
 
@@ -169,7 +169,7 @@ export default function Portfolio() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Markt
+              Market
             </button>
           </div>
         </div>
@@ -177,11 +177,11 @@ export default function Portfolio() {
         {/* Holdings Tab */}
         {activeTab === 'holdings' && (
           <Card>
-            <h2 className="text-xl font-semibold mb-4">Meine Holdings</h2>
+            <h2 className="text-xl font-semibold mb-4">My Holdings</h2>
             {portfolio?.holdings.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
-                <p>Noch keine Holdings</p>
-                <p className="text-sm mt-2">Starte deinen ersten Trade im Markt-Tab</p>
+                <p>No holdings yet</p>
+                <p className="text-sm mt-2">Start your first trade in the Market tab</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -189,11 +189,11 @@ export default function Portfolio() {
                   <thead>
                     <tr className="border-b">
                       <th className="text-left py-3 px-4">Asset</th>
-                      <th className="text-right py-3 px-4">Menge</th>
-                      <th className="text-right py-3 px-4">Kaufpreis</th>
-                      <th className="text-right py-3 px-4">Marktpreis</th>
+                      <th className="text-right py-3 px-4">Quantity</th>
+                      <th className="text-right py-3 px-4">Purchase Price</th>
+                      <th className="text-right py-3 px-4">Market Price</th>
                       <th className="text-right py-3 px-4">P&L</th>
-                      <th className="text-right py-3 px-4">Aktion</th>
+                      <th className="text-right py-3 px-4">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -206,13 +206,13 @@ export default function Portfolio() {
                           <td className="py-3 px-4 font-medium">{holding.symbol}</td>
                           <td className="py-3 px-4 text-right">{holding.qty}</td>
                           <td className="py-3 px-4 text-right">
-                            {holding.avgPrice.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+                            {holding.avgPrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                           </td>
                           <td className="py-3 px-4 text-right">
-                            {holding.marketPrice.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+                            {holding.marketPrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                           </td>
                           <td className={`py-3 px-4 text-right font-semibold ${pnl >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                            {pnl >= 0 ? '+' : ''}{pnl.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })} ({pnlPercent}%)
+                            {pnl >= 0 ? '+' : ''}{pnl.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} ({pnlPercent}%)
                           </td>
                           <td className="py-3 px-4 text-right">
                             <Button
@@ -220,7 +220,7 @@ export default function Portfolio() {
                               onClick={() => handleTrade(holding.symbol, 'SELL')}
                               className="text-sm"
                             >
-                              Verkaufen
+                              Sell
                             </Button>
                           </td>
                         </tr>
@@ -257,7 +257,7 @@ export default function Portfolio() {
                         </div>
                       </td>
                       <td className="py-3 px-4 text-right">
-                        {asset.price.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+                        {asset.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                       </td>
                       <td className="py-3 px-4 text-right">
                         <span className={asset.change >= 0 ? 'text-green-600' : 'text-red-600'}>
@@ -270,7 +270,7 @@ export default function Portfolio() {
                           onClick={() => handleTrade(asset.symbol, 'BUY')}
                           className="text-sm"
                         >
-                          Kaufen
+                          Buy
                         </Button>
                       </td>
                     </tr>
@@ -285,7 +285,7 @@ export default function Portfolio() {
         <Modal
           isOpen={showTradeModal}
           onClose={() => setShowTradeModal(false)}
-          title={tradeType === 'BUY' ? 'Kaufen' : 'Verkaufen'}
+          title={tradeType === 'BUY' ? 'Buy' : 'Sell'}
         >
           <div className="mb-4">
             <p className="text-sm text-gray-600 mb-2">
@@ -293,13 +293,13 @@ export default function Portfolio() {
             </p>
             {asset && (
               <p className="text-sm text-gray-600">
-                Aktueller Preis: {asset.price.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+                Current Price: {asset.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
               </p>
             )}
           </div>
 
           <Input
-            label="Menge"
+            label="Quantity"
             type="number"
             value={tradeQty}
             onChange={(e) => setTradeQty(e.target.value)}
@@ -310,12 +310,12 @@ export default function Portfolio() {
 
           {asset && tradeQty && (
             <div className="mb-4 p-3 bg-gray-50 rounded-lg">
-              <div className="text-sm text-gray-600 mb-1">Geschätzter Betrag:</div>
+              <div className="text-sm text-gray-600 mb-1">Estimated Amount:</div>
               <div className="text-lg font-semibold">
-                {estimatedCost.toLocaleString('de-DE', { style: 'currency', currency: 'USD' })}
+                {estimatedCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
               </div>
               <div className="text-xs text-gray-500 mt-1">
-                (inkl. simulierter Slippage)
+                (incl. simulated slippage)
               </div>
             </div>
           )}
@@ -326,13 +326,13 @@ export default function Portfolio() {
               loading={submitting}
               className="flex-1"
             >
-              Bestätigen
+              Confirm
             </Button>
             <Button
               variant="secondary"
               onClick={() => setShowTradeModal(false)}
             >
-              Abbrechen
+              Cancel
             </Button>
           </div>
         </Modal>

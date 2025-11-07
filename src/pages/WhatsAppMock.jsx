@@ -44,7 +44,7 @@ export default function WhatsAppMock() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-4">
           <Link to="/app" className="text-blue-600 hover:text-blue-800 text-sm">
-            ← Zurück zum Dashboard
+            ← Back to Dashboard
           </Link>
         </div>
 
@@ -53,7 +53,7 @@ export default function WhatsAppMock() {
           
           <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <p className="text-sm text-yellow-800">
-              ⚠️ Nur Demo – keine echte Integration
+              ⚠️ Demo only – no real integration
             </p>
           </div>
 
@@ -70,11 +70,11 @@ export default function WhatsAppMock() {
                     <p className="text-sm text-gray-600">{message.type}</p>
                   </div>
                   <Badge variant={message.status === 'sent' ? 'success' : 'default'}>
-                    {message.status === 'sent' ? 'Gesendet' : 'Geplant'}
+                    {message.status === 'sent' ? 'Sent' : 'Planned'}
                   </Badge>
                 </div>
                 <p className="text-sm text-gray-500 mb-2">
-                  Geplant: {new Date(message.scheduled).toLocaleString('de-DE')}
+                  Scheduled: {new Date(message.scheduled).toLocaleString('en-US')}
                 </p>
                 <p className="text-sm text-gray-700 line-clamp-2">{message.preview}</p>
               </div>
@@ -86,7 +86,7 @@ export default function WhatsAppMock() {
         <Modal
           isOpen={selectedMessage !== null}
           onClose={() => setSelectedMessage(null)}
-          title="WhatsApp-Nachricht Preview"
+          title="WhatsApp Message Preview"
         >
           {selectedMessage && (
             <div>
@@ -98,15 +98,15 @@ export default function WhatsAppMock() {
                   <div>
                     <div className="font-semibold">Athlete Game</div>
                     <div className="text-xs text-gray-500">
-                      {new Date(selectedMessage.scheduled).toLocaleString('de-DE')}
+                      {new Date(selectedMessage.scheduled).toLocaleString('en-US')}
                     </div>
                   </div>
                 </div>
                 <p className="text-gray-800 whitespace-pre-wrap">{selectedMessage.preview}</p>
               </div>
               <div className="text-xs text-gray-500">
-                <p>Typ: {selectedMessage.type}</p>
-                <p>Status: {selectedMessage.status === 'sent' ? 'Gesendet' : 'Geplant'}</p>
+                <p>Type: {selectedMessage.type}</p>
+                <p>Status: {selectedMessage.status === 'sent' ? 'Sent' : 'Planned'}</p>
               </div>
             </div>
           )}

@@ -40,7 +40,7 @@ export default function Challenge() {
 
   const handleSubmit = async () => {
     if (!selectedAction) {
-      setToast({ type: 'error', message: 'Bitte eine Aktion wählen' });
+      setToast({ type: 'error', message: 'Please select an action' });
       return;
     }
 
@@ -48,7 +48,7 @@ export default function Challenge() {
     try {
       await mockApi.submitChallenge(selectedAction);
       setChallengeSubmitted(true);
-      setToast({ type: 'success', message: 'Challenge erfolgreich eingereicht!' });
+      setToast({ type: 'success', message: 'Challenge submitted successfully!' });
     } catch (err) {
       setToast({ type: 'error', message: err.message });
     } finally {
@@ -73,15 +73,15 @@ export default function Challenge() {
       <div className="max-w-2xl mx-auto">
         <div className="mb-4">
           <Link to="/app" className="text-blue-600 hover:text-blue-800 text-sm">
-            ← Zurück zum Dashboard
+            ← Back to Dashboard
           </Link>
         </div>
 
         <Card highlight>
           <div className="mb-4">
-            <h1 className="text-2xl font-bold mb-2">Wochenauftrag – Real-Case</h1>
+            <h1 className="text-2xl font-bold mb-2">Weekly Challenge – Real-Case</h1>
             <Badge variant={challenge?.status === 'active' ? 'success' : 'default'}>
-              {challenge?.status || 'Inaktiv'}
+              {challenge?.status || 'Inactive'}
             </Badge>
           </div>
 
@@ -92,12 +92,12 @@ export default function Challenge() {
 
           {isExpired && (
             <div className="mb-4 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <p className="text-sm text-yellow-800">⚠️ Diese Challenge ist abgelaufen.</p>
+              <p className="text-sm text-yellow-800">⚠️ This challenge has expired.</p>
             </div>
           )}
 
           <div className="mb-6">
-            <h3 className="font-semibold mb-3">Wie würdest du reagieren?</h3>
+            <h3 className="font-semibold mb-3">How would you react?</h3>
             <div className="space-y-3">
               {challenge?.actions.map((action) => (
                 <label
@@ -125,7 +125,7 @@ export default function Challenge() {
 
           <div className="mb-4 p-3 bg-gray-50 rounded-lg">
             <p className="text-sm text-gray-600">
-              💡 Tipp: Weitere Details kannst du im Portfolio prüfen.
+              💡 Tip: You can check more details in the Portfolio.
             </p>
           </div>
 
@@ -136,12 +136,12 @@ export default function Challenge() {
               loading={submitting}
               className="flex-1"
             >
-              {challengeSubmitted ? 'Eingereicht ✓' : 'Entscheidung einreichen'}
+              {challengeSubmitted ? 'Submitted ✓' : 'Submit Decision'}
             </Button>
             {challengeSubmitted && (
               <Link to="/app/portfolio">
                 <Button variant="secondary">
-                  Im Portfolio umsetzen
+                  Execute in Portfolio
                 </Button>
               </Link>
             )}

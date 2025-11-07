@@ -14,7 +14,7 @@ export default function Navbar() {
               Athlete Game
             </Link>
             <Link to="/" className="text-sm text-gray-600 hover:text-gray-900">
-              Demo starten
+              Start Demo
             </Link>
           </div>
         </div>

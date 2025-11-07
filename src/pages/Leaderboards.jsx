@@ -44,7 +44,7 @@ export default function Leaderboards() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-4">
           <Link to="/app" className="text-blue-600 hover:text-blue-800 text-sm">
-            ← Zurück zum Dashboard
+            ← Back to Dashboard
           </Link>
         </div>
 
@@ -61,7 +61,7 @@ export default function Leaderboards() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Woche
+              Week
             </button>
             <button
               onClick={() => setActiveTab('overall')}
@@ -71,7 +71,7 @@ export default function Leaderboards() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Gesamt
+              Overall
             </button>
           </div>
 
@@ -82,8 +82,8 @@ export default function Leaderboards() {
               onChange={(e) => setFilter(e.target.value)}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="all">Alle</option>
-              <option value="my-group">Meine Gruppe</option>
+              <option value="all">All</option>
+              <option value="my-group">My Group</option>
             </select>
           </div>
 
@@ -92,11 +92,11 @@ export default function Leaderboards() {
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left py-3 px-4">Rang</th>
+                  <th className="text-left py-3 px-4">Rank</th>
                   <th className="text-left py-3 px-4">Name</th>
-                  <th className="text-right py-3 px-4">Rendite %</th>
+                  <th className="text-right py-3 px-4">Return %</th>
                   <th className="text-right py-3 px-4">Trades</th>
-                  <th className="text-right py-3 px-4">Letzter Trade</th>
+                  <th className="text-right py-3 px-4">Last Trade</th>
                 </tr>
               </thead>
               <tbody>
@@ -110,7 +110,7 @@ export default function Leaderboards() {
                         <div className="flex items-center gap-2">
                           <span className="font-semibold">{entry.rank}</span>
                           {entry.rank <= 3 && <Badge variant="top3">Top {entry.rank}</Badge>}
-                          {isNewInTop10 && <Badge variant="success">Neu in Top 10</Badge>}
+                          {isNewInTop10 && <Badge variant="success">New in Top 10</Badge>}
                         </div>
                       </td>
                       <td className="py-3 px-4 font-medium">{entry.name}</td>
